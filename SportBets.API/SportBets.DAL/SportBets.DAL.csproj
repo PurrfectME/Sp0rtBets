@@ -57,12 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SportBets.BLL\SportBets.BLL.csproj">
-      <Project>{1ea61593-d2c9-40f2-9a98-d3d7eeb0b7d0}</Project>
-      <Name>SportBets.BLL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -70,6 +64,12 @@
     <EmbeddedResource Include="Migrations\201808230842173_Initial.resx">
       <DependentUpon>201808230842173_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportBets.BLL\SportBets.BLL.csproj">
+      <Project>{1ea61593-d2c9-40f2-9a98-d3d7eeb0b7d0}</Project>
+      <Name>SportBets.BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
