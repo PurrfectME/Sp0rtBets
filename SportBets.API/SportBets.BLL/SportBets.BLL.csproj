@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\BasketballTeamDTO.cs" />
+    <Compile Include="DTO\BetcardDTO.cs" />
+    <Compile Include="DTO\BetDTO.cs" />
+    <Compile Include="DTO\FootballTeamDTO.cs" />
+    <Compile Include="DTO\HorseDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Entities\BasketballTeam.cs" />
     <Compile Include="Entities\Bet.cs" />
     <Compile Include="Entities\Betcard.cs" />
