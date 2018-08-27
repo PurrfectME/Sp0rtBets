@@ -55,6 +55,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\BetRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +73,9 @@
       <Project>{1ea61593-d2c9-40f2-9a98-d3d7eeb0b7d0}</Project>
       <Name>SportBets.BLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
