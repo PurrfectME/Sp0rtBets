@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using SportBets.BLL.Interfaces;
 using SportBets.DAL.EntitiesContext;
-using SportBets.DAL.Interfaces;
 
 namespace SportBets.DAL.Repositories
 {
@@ -32,18 +32,12 @@ namespace SportBets.DAL.Repositories
         {
             var isBet = _entity.Find(entity);
 
-            _entity.Remove(isBet);
+            _entity.Remove(isBet ?? throw new InvalidOperationException());
         }
 
         public async Task CommitAsync()
         {
             await this._context.SaveChangesAsync();
-        }
-
-        public void Dispose()
-        {
-            Dispose();
-            GC.SuppressFinalize(this);
         }
     }
 }

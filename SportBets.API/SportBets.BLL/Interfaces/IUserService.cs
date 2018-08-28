@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using SportBets.BLL.Entities;
 
@@ -11,6 +12,6 @@ namespace SportBets.BLL.Interfaces
         Task<Bet> MakeBet(Bet betId);
         Task<Bet> EditBet(Bet betId, DateTime betDate);
         Task<Bet> CancelBet(Bet betId, DateTime betStartTime);
-        Task<Bet> GetAllBets();
+        IEnumerable<Bet> GetAllBets();
     }
 }

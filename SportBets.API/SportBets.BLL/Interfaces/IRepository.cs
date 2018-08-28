@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace SportBets.DAL.Interfaces
+namespace SportBets.BLL.Interfaces
 {
-    public interface IRepository<in T> : IDisposable where T : class
+    public interface IRepository<in T> where T : class
     {
          
         //IEnumerable<T> GetList();
