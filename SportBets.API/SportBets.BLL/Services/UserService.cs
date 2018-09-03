@@ -1,46 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using SportBets.BLL.Entities;
+using SportBets.BLL.InterfaceForFinders;
+using SportBets.BLL.InterfaceForService;
 using SportBets.BLL.Interfaces;
 
 
 namespace SportBets.BLL.Services
 {
-    class UserService : IUserService
+    public class UserService : IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserFinder _userFinder;
+        private readonly IRepository<User> _userRepository;
 
-
-
-        public Task<Bet> FindBetByType(ItemType betType)
+        public UserService(IUnitOfWork unitOfWork, IUserFinder userFinder, IRepository<User> userRepository)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
+            _userFinder = userFinder;
+            _userRepository = userRepository;
         }
 
-        public Task<Bet> FindBetByDate(DateTime date)
+        public User CreateUser(User user)
         {
-            throw new NotImplementedException();
+            var userToCreate = _userRepository.Create(user);
+            _unitOfWork.Commit();
+
+            return userToCreate;
         }
 
-        public Task<Bet> MakeBet(Bet betId)
+        public User DeleteUser(User user)
         {
-            throw new NotImplementedException();
+            var userToDelete = _userRepository.Delete(user);
+            _unitOfWork.Commit();
+
+            return userToDelete;
         }
 
-        public Task<Bet> EditBet(Bet betId, DateTime betDate)
-        {
-            throw new NotImplementedException();
-        }
+        public List<User> GetUserById(User user) => _userFinder.FindUserById(user);
+      
+        public List<User> GetUsersByRegDate(User user) => _userFinder.FindUsersByRegDate(user);
 
-        public Task<Bet> CancelBet(Bet betId, DateTime betStartTime)
-        {
-            throw new NotImplementedException();
-        }
+        public List<User> GetAllUsers() => _userFinder.FindAllUsers();
 
-        public IEnumerable<Bet> GetAllBets()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

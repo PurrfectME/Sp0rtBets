@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using SportBets.BLL.Interfaces;
 using SportBets.DAL.EntitiesContext;
@@ -9,7 +10,7 @@ namespace SportBets.DAL.Repositories
     class Repository<T> : IRepository<T> where T : class 
     {
         private readonly SportBetsContext _context;
-        private DbSet<T> _entity;
+        private readonly DbSet<T> _entity;
         //private bool _disposed;
 
         public Repository(SportBetsContext context)
@@ -18,21 +19,26 @@ namespace SportBets.DAL.Repositories
             _entity = this._context.Set<T>();
         }
          
-        public void Create(T entity)
+        public T Create(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentException("entity");
             }
 
-            this._entity.Add(entity);
+            return this._entity.Add(entity);
         }
 
-        public void Delete(T entity)
+        public T Delete(T entity)
         {
             var isBet = _entity.Find(entity);
 
-            _entity.Remove(isBet ?? throw new InvalidOperationException());
+            return _entity.Remove(isBet ?? throw new InvalidOperationException());
+        }
+
+        public IQueryable<T> GetAll()
+        {
+            return _entity;
         }
 
         public async Task CommitAsync()

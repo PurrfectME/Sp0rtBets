@@ -13,7 +13,5 @@ namespace SportBets.DAL.EntitiesContext
         public DbSet<FootballTeam> FootballTeams { get; set; }
         public DbSet<BasketballTeam> BasketballTeams { get; set; }
         public DbSet<Bet> Bets { get; set; }
-        public DbSet<Betcard> Betcards { get; set; }
-
     }
 }
