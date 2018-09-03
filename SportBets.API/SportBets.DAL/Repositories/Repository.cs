@@ -7,7 +7,7 @@ using SportBets.DAL.EntitiesContext;
 
 namespace SportBets.DAL.Repositories
 {
-    class Repository<T> : IRepository<T> where T : class 
+    public class Repository<T> : IRepository<T> where T : class 
     {
         private readonly SportBetsContext _context;
         private readonly DbSet<T> _entity;
