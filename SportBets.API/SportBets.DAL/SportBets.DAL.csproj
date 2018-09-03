@@ -49,18 +49,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntitiesContext\SportBetsContext.cs" />
+    <Compile Include="Finder\BasketballTeamFinder.cs" />
+    <Compile Include="Finder\BetFinder.cs" />
+    <Compile Include="Finder\BaseFinder.cs" />
+    <Compile Include="Finder\FootballTeamFinder.cs" />
+    <Compile Include="Finder\HorseFinder.cs" />
+    <Compile Include="Finder\UserFinder.cs" />
     <Compile Include="Migrations\201808230842173_Initial.cs" />
     <Compile Include="Migrations\201808230842173_Initial.Designer.cs">
       <DependentUpon>201808230842173_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808290830389_DeletedBetcardEntity\AddedBetDatePropToBetEntity.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SportBets.BLL\SportBets.BLL.csproj">
-      <Project>{1ea61593-d2c9-40f2-9a98-d3d7eeb0b7d0}</Project>
-      <Name>SportBets.BLL</Name>
-    </ProjectReference>
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +73,12 @@
     <EmbeddedResource Include="Migrations\201808230842173_Initial.resx">
       <DependentUpon>201808230842173_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportBets.BLL\SportBets.BLL.csproj">
+      <Project>{1ea61593-d2c9-40f2-9a98-d3d7eeb0b7d0}</Project>
+      <Name>SportBets.BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
