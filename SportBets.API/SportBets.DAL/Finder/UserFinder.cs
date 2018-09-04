@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using SportBets.BLL.Entities;
@@ -8,20 +9,20 @@ namespace SportBets.DAL.Finder
 {
     public class UserFinder : BaseFinder<User> , IUserFinder
     {
-        protected UserFinder(DbSet<User> entities) : base(entities)
+        public UserFinder(DbSet<User> entities) : base(entities)
         {
         }
         
-        public List<User> FindUserById(User user)
+        public List<User> FindUserById(int id)
         {
-            var userById = Find().Where(x => x.Id.Equals(user.Id)).ToList();
+            var userById = Find().Where(x => x.Id.Equals(id)).ToList();
 
             return userById;
         }
 
-        public List<User> FindUsersByRegDate(User user)
+        public List<User> FindUsersByRegDate(DateTime dateTime)
         {
-            var usersByRegDate = Find().Where(x => x.RegistrationDate.Equals(user.RegistrationDate)).OrderBy(x => x.Id)
+            var usersByRegDate = Find().Where(x => x.RegistrationDate.Equals(dateTime)).OrderBy(x => x.Id)
                 .ToList();
 
             return usersByRegDate;

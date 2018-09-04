@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Moq;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
@@ -64,13 +65,13 @@ namespace SportBets.BLL.Tests
             var service = new UserService(unitOfWork.Object, finder.Object, userCollection.Object);
 
             //act
-            finder.Setup(x => x.FindUserById(user))
+            finder.Setup(x => x.FindUserById(user.Id))
                 .Returns(new List<User>());
 
             service.GetUserById(user);
 
             //assert
-            finder.Verify(x => x.FindUserById(It.IsAny<User>()), Times.Once);
+            finder.Verify(x => x.FindUserById(It.IsAny<int>()), Times.Once);
         }
 
         [Fact]
@@ -85,13 +86,13 @@ namespace SportBets.BLL.Tests
             var service = new UserService(unitOfWork.Object, finder.Object, userCollection.Object);
 
             //act
-            finder.Setup(x => x.FindUsersByRegDate(user))
+            finder.Setup(x => x.FindUsersByRegDate(user.RegistrationDate))
                 .Returns(new List<User>());
 
             service.GetUsersByRegDate(user);
 
             //assert
-            finder.Verify(x => x.FindUsersByRegDate(It.IsAny<User>()));
+            finder.Verify(x => x.FindUsersByRegDate(It.IsAny<DateTime>()));
         }
 
         [Fact]

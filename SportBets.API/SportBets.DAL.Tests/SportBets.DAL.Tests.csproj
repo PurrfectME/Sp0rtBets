@@ -78,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryTest.cs" />
     <Compile Include="UnitOfWorkTest.cs" />
+    <Compile Include="UserFinderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

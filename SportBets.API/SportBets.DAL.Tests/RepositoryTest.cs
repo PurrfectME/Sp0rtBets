@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+﻿using Moq;
 using Moq.EntityFramework;
 using SportBets.BLL.Entities;
-using SportBets.BLL.Interfaces;
 using SportBets.DAL.EntitiesContext;
 using SportBets.DAL.Repositories;
 using Xunit;
@@ -18,7 +13,6 @@ namespace SportBets.DAL.Tests
         public void CreateEntity()
         {
             //initiallizing
-            
             var context = DbContextMockFactory.Create<SportBetsContext>();
             var setMock = context.MockedSet<Bet>();
             var repository = new Repository<Bet>(context.Object.Bets);
@@ -60,8 +54,5 @@ namespace SportBets.DAL.Tests
            //assert
            setMock.Verify();
        }
-
-      
-
    }
 }

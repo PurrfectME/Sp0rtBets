@@ -36,9 +36,9 @@ namespace SportBets.BLL.Services
             return userToDelete;
         }
 
-        public List<User> GetUserById(User user) => _userFinder.FindUserById(user);
+        public List<User> GetUserById(User user) => _userFinder.FindUserById(user.Id);
       
-        public List<User> GetUsersByRegDate(User user) => _userFinder.FindUsersByRegDate(user);
+        public List<User> GetUsersByRegDate(User user) => _userFinder.FindUsersByRegDate(user.RegistrationDate);
 
         public List<User> GetAllUsers() => _userFinder.FindAllUsers();
 

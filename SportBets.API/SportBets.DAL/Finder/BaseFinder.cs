@@ -8,7 +8,7 @@ namespace SportBets.DAL.Finder
     {
         private readonly DbSet<T> _entities;
 
-        protected BaseFinder(DbSet<T> entities)
+        public BaseFinder(DbSet<T> entities)
         {
             _entities = entities;
         }
