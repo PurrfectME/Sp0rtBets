@@ -1,5 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Moq.EntityFramework;
+using SportBets.BLL.Entities;
 using SportBets.BLL.Interfaces;
 using SportBets.DAL.EntitiesContext;
 using SportBets.DAL.Repositories;
@@ -13,45 +18,48 @@ namespace SportBets.DAL.Tests
         public void CreateEntity()
         {
             //initiallizing
-            var entity = new SportBetsContext();
-            var repository = new Mock<IRepository<SportBetsContext>>();
-
-            repository.Setup(x => x.Create(entity))
-                .Returns(entity);
+            
+            var context = DbContextMockFactory.Create<SportBetsContext>();
+            var setMock = context.MockedSet<Bet>();
+            var repository = new Repository<Bet>(context.Object.Bets);
 
             //act
-            repository.Object.Create(entity);
+            repository.Create(new Bet());
 
             //assert
-            repository.Verify(x => x.Create(entity), Times.Once);
+            setMock.Verify(x => x.Add(It.IsAny<Bet>()), Times.Once);
         }
 
         [Fact]
         public void DeleteEntity()
         {
             //initiallizing
-            var entity = new SportBetsContext();
-            var repository = new Mock<IRepository<SportBetsContext>>();
-
-            repository.Setup(x => x.Delete(entity));
-                
+            var context = DbContextMockFactory.Create<SportBetsContext>();
+            var setMock = context.MockedSet<Bet>();
+            var respository = new Repository<Bet>(context.Object.Bets);
 
             //act
-            repository.Object.Delete(entity);
+            respository.Delete(new Bet());
 
             //assert
-            repository.Verify(x => x.Delete(entity), Times.Once);
+            setMock.Verify(x => x.Remove(It.IsAny<Bet>()), Times.Once);
+
         }
 
        [Fact]
        public void GetAllEntities()
        {
            //initiallizing
-           var repository = new Mock<IRepository<SportBetsContext>>();
+           var context = DbContextMockFactory.Create<SportBetsContext>();
+           var setMock = context.MockedSet<Bet>();
+           var repository = new Repository<Bet>(context.Object.Bets);
 
-            repository.Setup(x => x.GetAll())
-                .Returns();
-        }
+           //act
+           repository.GetAll();
+
+           //assert
+           setMock.Verify();
+       }
 
       
 

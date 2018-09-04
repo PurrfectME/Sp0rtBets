@@ -4,9 +4,9 @@ namespace SportBets.BLL.Entities
 {
     public class User
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Email { get; set; }
+        public virtual string PasswordHash { get; set; }
+        public virtual DateTime RegistrationDate { get; set; }
     }
 }
