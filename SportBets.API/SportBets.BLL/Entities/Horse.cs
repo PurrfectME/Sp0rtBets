@@ -2,11 +2,11 @@
 {
     public class Horse
     {
-        public int Id { get; set; }
-        public string HorseName { get; set; }
-        public float Weight { get; set; }
-        public int Age { get; set; }
-        public int WinsCount { get; set; }
-        public int LossesCount { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string HorseName { get; set; }
+        public virtual float Weight { get; set; }
+        public virtual int Age { get; set; }
+        public virtual int WinsCount { get; set; }
+        public virtual int LossesCount { get; set; }
     }
 }

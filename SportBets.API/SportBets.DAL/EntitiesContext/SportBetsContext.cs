@@ -8,10 +8,10 @@ namespace SportBets.DAL.EntitiesContext
         public SportBetsContext() :
             base("BetContext") { }
         
-        public DbSet<User> Users { get; set; }
-        public DbSet<Horse> Horses { get; set; }
-        public DbSet<FootballTeam> FootballTeams { get; set; }
-        public DbSet<BasketballTeam> BasketballTeams { get; set; }
-        public DbSet<Bet> Bets { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Horse> Horses { get; set; }
+        public virtual DbSet<FootballTeam> FootballTeams { get; set; }
+        public virtual DbSet<BasketballTeam> BasketballTeams { get; set; }
+        public virtual DbSet<Bet> Bets { get; set; }
     }
 }

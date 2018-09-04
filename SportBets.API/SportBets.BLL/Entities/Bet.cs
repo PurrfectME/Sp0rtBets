@@ -11,10 +11,10 @@ namespace SportBets.BLL.Entities
 
     public class Bet
     {
-        public int Id { get; set; }
-        public ItemType BetItemType { get; set; }
-        public double Coefficient { get; set; }
-        public DateTime BetDate { get; set; }
-        public User UserId { get; set; }
+        public virtual int Id { get; set; }
+        public virtual ItemType BetItemType { get; set; }
+        public virtual double Coefficient { get; set; }
+        public virtual DateTime BetDate { get; set; }
+        public virtual User UserId { get; set; }
     }
 }
