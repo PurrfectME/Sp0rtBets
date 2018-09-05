@@ -9,7 +9,7 @@ namespace SportBets.DAL.Finder
 {
     public class BetFinder : BaseFinder<Bet>, IBetFinder
     {
-        protected BetFinder(DbSet<Bet> entities) : base(entities)
+        public BetFinder(IDbSet<Bet> entities) : base(entities)
         {
         }
  
@@ -27,9 +27,9 @@ namespace SportBets.DAL.Finder
             return result;
         }
 
-        public List<Bet> FindBetsById(Bet bet)
+        public List<Bet> FindBetsById(int id)
         {
-            var result = Find().Where(x => x.Id == bet.Id).ToList();
+            var result = Find().Where(x => x.Id == id).ToList();
 
             return result;
         }

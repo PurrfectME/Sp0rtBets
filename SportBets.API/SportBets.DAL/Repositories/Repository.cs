@@ -1,9 +1,6 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using SportBets.BLL.Interfaces;
-using SportBets.DAL.EntitiesContext;
 
 namespace SportBets.DAL.Repositories
 {

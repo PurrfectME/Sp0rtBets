@@ -7,11 +7,11 @@ namespace SportBets.BLL.InterfaceForService
     {
         Horse CreateHorse(Horse horse);
         Horse DeleteHorse(Horse horse);
-        List<Horse> GetHorseById(Horse horse);
-        List<Horse> GetHorsesByAge(Horse horse);
-        List<Horse> GetHorsesByWeight(Horse horse);
-        List<Horse> GetHorsesByWins(Horse horse);
-        List<Horse> GetHorsesByLosses(Horse horse);
-        List<Horse> GetHorsesByName(Horse horse);
+        List<Horse> GetHorseById(int id);
+        List<Horse> GetHorsesByAge(int age);
+        List<Horse> GetHorsesByWeight(float weight);
+        List<Horse> GetHorsesByWins(int wins);
+        List<Horse> GetHorsesByLosses(int losses);
+        List<Horse> GetHorsesByName(string name);
     }
 }

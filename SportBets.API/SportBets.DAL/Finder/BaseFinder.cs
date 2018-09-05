@@ -6,9 +6,9 @@ namespace SportBets.DAL.Finder
 {
     public class BaseFinder<T> : IFinder<T> where T : class 
     {
-        private readonly DbSet<T> _entities;
+        private readonly IDbSet<T> _entities;
 
-        public BaseFinder(DbSet<T> entities)
+        public BaseFinder(IDbSet<T> entities)
         {
             _entities = entities;
         }

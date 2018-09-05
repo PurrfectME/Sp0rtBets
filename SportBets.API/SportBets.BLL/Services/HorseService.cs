@@ -37,16 +37,16 @@ namespace SportBets.BLL.Services
             return horseToDelete;
         }
         
-        public List<Horse> GetHorseById(Horse horse) => _horseFinder.FindHorseById(horse);
+        public List<Horse> GetHorseById(int id) => _horseFinder.FindHorseById(id);
 
-        public List<Horse> GetHorsesByAge(Horse horse) => _horseFinder.FindHorsesByAge(horse);
+        public List<Horse> GetHorsesByAge(int age) => _horseFinder.FindHorsesByAge(age);
         
-        public List<Horse> GetHorsesByWeight(Horse horse) => _horseFinder.FindHorsesByWeight(horse);
+        public List<Horse> GetHorsesByWeight(float weight) => _horseFinder.FindHorsesByWeight(weight);
         
-        public List<Horse> GetHorsesByWins(Horse horse) => _horseFinder.FindHorseByWins(horse);
+        public List<Horse> GetHorsesByWins(int wins) => _horseFinder.FindHorseByWins(wins);
 
-        public List<Horse> GetHorsesByLosses(Horse horse) => _horseFinder.FindHorsesByLosses(horse);
+        public List<Horse> GetHorsesByLosses(int losses) => _horseFinder.FindHorsesByLosses(losses);
 
-        public List<Horse> GetHorsesByName(Horse horse) => _horseFinder.FindHorseByName(horse);
+        public List<Horse> GetHorsesByName(string name) => _horseFinder.FindHorseByName(name);
     }
 }

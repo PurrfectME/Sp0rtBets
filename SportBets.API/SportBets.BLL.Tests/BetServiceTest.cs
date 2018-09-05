@@ -65,13 +65,13 @@ namespace SportBets.BLL.Tests
             var service = new BetService(unitOfWork.Object, finder.Object, collection.Object);
 
             //act
-            finder.Setup(x => x.FindBetsById(bet))
+            finder.Setup(x => x.FindBetsById(bet.Id))
                 .Returns(new List<Bet>());
 
-            service.GetBetById(bet);
+            service.GetBetById(bet.Id);
 
             //assert
-            finder.Verify(x => x.FindBetsById(It.IsAny<Bet>()));
+            finder.Verify(x => x.FindBetsById(It.IsAny<int>()));
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace SportBets.BLL.Tests
             finder.Setup(x => x.FindBetsByType(bet.BetItemType))
                 .Returns(new List<Bet>());
 
-            service.GetBetsByType(bet);
+            service.GetBetsByType(bet.BetItemType);
 
             //assert
             finder.Verify(x => x.FindBetsByType(It.IsAny<ItemType>()));
@@ -110,7 +110,7 @@ namespace SportBets.BLL.Tests
             finder.Setup(x => x.FindBetsByDate(bet.BetDate))
                 .Returns(new List<Bet>());
 
-            service.GetBetsByDate(bet);
+            service.GetBetsByDate(bet.BetDate);
 
             //assert
             finder.Verify(x => x.FindBetsByDate(It.IsAny<DateTime>()));

@@ -34,16 +34,16 @@ namespace SportBets.BLL.Services
             return teamToDelete;
         }
 
-        public List<FootballTeam> GetTeamsById(FootballTeam footballTeam) =>
-            _footballTeamFinder.FindFootballTeamById(footballTeam);
+        public List<FootballTeam> GetTeamsById(int id) =>
+            _footballTeamFinder.FindFootballTeamById(id);
         
-        public List<FootballTeam> GetTeamsByName(FootballTeam footballTeam) =>
-            _footballTeamFinder.FindFootballTeamsByTeamname(footballTeam);
+        public List<FootballTeam> GetTeamsByName(string name) =>
+            _footballTeamFinder.FindFootballTeamsByTeamname(name);
 
-        public List<FootballTeam> GetTeamsByWins(FootballTeam footballTeam) =>
-            _footballTeamFinder.FindFootballTeamsByWins(footballTeam);
+        public List<FootballTeam> GetTeamsByWins(int wins) =>
+            _footballTeamFinder.FindFootballTeamsByWins(wins);
 
-        public List<FootballTeam> GetTeamsByLosses(FootballTeam footballTeam) =>
-            _footballTeamFinder.FindFootballTeamsByLosses(footballTeam);
+        public List<FootballTeam> GetTeamsByLosses(int losses) =>
+            _footballTeamFinder.FindFootballTeamsByLosses(losses);
     }
 }

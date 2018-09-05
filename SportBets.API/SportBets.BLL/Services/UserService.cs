@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
 using SportBets.BLL.InterfaceForService;
@@ -36,9 +37,9 @@ namespace SportBets.BLL.Services
             return userToDelete;
         }
 
-        public List<User> GetUserById(User user) => _userFinder.FindUserById(user.Id);
+        public List<User> GetUserById(int id) => _userFinder.FindUserById(id);
       
-        public List<User> GetUsersByRegDate(User user) => _userFinder.FindUsersByRegDate(user.RegistrationDate);
+        public List<User> GetUsersByRegDate(DateTime date) => _userFinder.FindUsersByRegDate(date);
 
         public List<User> GetAllUsers() => _userFinder.FindAllUsers();
 

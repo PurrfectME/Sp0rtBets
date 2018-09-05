@@ -9,11 +9,11 @@ namespace SportBets.BLL.InterfaceForFinders
 {
     public interface IHorseFinder
     {
-        List<Horse> FindHorseById(Horse horse);
-        List<Horse> FindHorsesByAge(Horse horse);
-        List<Horse> FindHorseByWins(Horse horse);
-        List<Horse> FindHorsesByLosses(Horse horse);
-        List<Horse> FindHorseByName(Horse horse);
-        List<Horse> FindHorsesByWeight(Horse horse);
+        List<Horse> FindHorseById(int id);
+        List<Horse> FindHorsesByAge(int age);
+        List<Horse> FindHorseByWins(int wins);
+        List<Horse> FindHorsesByLosses(int losses);
+        List<Horse> FindHorseByName(string name);
+        List<Horse> FindHorsesByWeight(float weight);
     }
 }

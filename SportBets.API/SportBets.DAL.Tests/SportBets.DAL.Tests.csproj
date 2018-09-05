@@ -75,6 +75,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasketballTeamFinderTest.cs" />
+    <Compile Include="BetFinderTest.cs" />
+    <Compile Include="FootballTeamFinderTest.cs" />
+    <Compile Include="HorseFinderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryTest.cs" />
     <Compile Include="UnitOfWorkTest.cs" />

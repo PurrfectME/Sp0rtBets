@@ -8,36 +8,36 @@ namespace SportBets.DAL.Finder
 {
     public class FootballTeamFinder : BaseFinder<FootballTeam> , IFootballTeamFinder
     {
-        protected FootballTeamFinder(DbSet<FootballTeam> entities) : base(entities)
+        public FootballTeamFinder(IDbSet<FootballTeam> entities) : base(entities)
         {
         }
 
 
-        public List<FootballTeam> FindFootballTeamById(FootballTeam footballTeam)
+        public List<FootballTeam> FindFootballTeamById(int id)
         {
-            var result = Find().Where(x => x.Id.Equals(footballTeam.Id)).ToList();
+            var result = Find().Where(x => x.Id.Equals(id)).ToList();
 
             return result;
         }
 
-        public List<FootballTeam> FindFootballTeamsByTeamname(FootballTeam footballTeam)
+        public List<FootballTeam> FindFootballTeamsByTeamname(string name)
         {
-            var result = Find().Where(x => x.TeamName.Equals(footballTeam.TeamName)).ToList();
+            var result = Find().Where(x => x.TeamName.Equals(name)).ToList();
 
             return result;
         }
 
-        public List<FootballTeam> FindFootballTeamsByWins(FootballTeam footballTeam)
+        public List<FootballTeam> FindFootballTeamsByWins(int wins)
         {
-            var result = Find().Where(x => x.WinsCount.Equals(footballTeam.WinsCount))
+            var result = Find().Where(x => x.WinsCount.Equals(wins))
                 .OrderByDescending(x => x.TeamName).ToList();
 
             return result;
         }
 
-        public List<FootballTeam> FindFootballTeamsByLosses(FootballTeam footballTeam)
+        public List<FootballTeam> FindFootballTeamsByLosses(int losses)
         {
-            var result = Find().Where(x => x.LossesCount.Equals(footballTeam.LossesCount))
+            var result = Find().Where(x => x.LossesCount.Equals(losses))
                 .OrderByDescending(x => x.TeamName).ToList();
 
             return result;

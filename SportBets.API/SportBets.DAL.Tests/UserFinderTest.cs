@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using Moq.EntityFramework;
 using SportBets.BLL.Entities;
+using SportBets.BLL.InterfaceForFinders;
 using SportBets.DAL.EntitiesContext;
 using SportBets.DAL.Finder;
 using Xunit;
@@ -12,32 +14,69 @@ using Assert = Xunit.Assert;
 
 namespace SportBets.DAL.Tests
 {
-    [TestClass]
+    
     public class UserFinderTest
     {
+        private readonly User _user = new User
+        {
+            Id = 1,
+            Email = "1",
+            PasswordHash = "3",
+            RegistrationDate = DateTime.Now
+        };
+        private readonly List<User> _list = new List<User>();
+        private UserFinder _userFinder;
+
+
         [Fact]
         public void FindById()
         {
-            var user = new User {
-                Id = 1,
-                Email = "1",
-                PasswordHash = "3",
-                RegistrationDate = DateTime.Now
-            };
-            
+            //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
-            var mockedSet = context.MockedSet<User>();
+            _list.Add(_user);
+            var mockedSet = context.MockSetFor<User>(_list);
+            _userFinder = new UserFinder(mockedSet.Object.Users);
 
-            var userFinder = new UserFinder(mockedSet.Object);
+            //act
+            var result = _userFinder.FindUserById(_user.Id);
 
-            var list = new List<User> {user};
-
-
-            userFinder.FindUserById(user.Id);
-
-            Assert.Equal(1, list[0].Id);
-
+            //assert
+            Assert.Equal(_user.Id, result.First().Id);
         }
+
+        [Fact]
+        public void FindByRegDate()
+        {
+            //initiallizing
+            var context = DbContextMockFactory.Create<SportBetsContext>();
+            _list.Add(_user);
+            var mockedSet = context.MockSetFor<User>(_list);
+            _userFinder = new UserFinder(mockedSet.Object.Users);
+
+            //act
+            var result = _userFinder.FindUsersByRegDate(_user.RegistrationDate);
+
+            //assert
+            Assert.Equal(_user.RegistrationDate, result.First().RegistrationDate);
+        }
+
+        //[Fact]
+        //public void FindAllUsers()
+        //{
+        //    //initiallizing
+        //    var context = DbContextMockFactory.Create<SportBetsContext>();
+        //    _list.Add(_user);
+        //    var mockedSet = context.MockSetFor<User>(_list);
+        //    _userFinder = new UserFinder(mockedSet.Object.Users);
+
+        //    //act
+        //    var result = _userFinder.FindAllUsers();
+
+        //    //assert
+        //    //Assert.Equal();
+
+
+        //}
         
     }
 }

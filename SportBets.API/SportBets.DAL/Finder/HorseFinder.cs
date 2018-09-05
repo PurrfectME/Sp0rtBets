@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Runtime.InteropServices;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
 
@@ -13,44 +12,44 @@ namespace SportBets.DAL.Finder
         {
         }
 
-        public List<Horse> FindHorseById(Horse horse)
+        public List<Horse> FindHorseById(int id)
         {
-            var result = Find().Where(x => x.Id.Equals(horse.Id)).ToList();
+            var result = Find().Where(x => x.Id.Equals(id)).ToList();
 
             return result;
         }
 
-        public List<Horse> FindHorsesByAge(Horse horse)
+        public List<Horse> FindHorsesByAge(int age)
         {
-            var result = Find().Where(x => x.Age.Equals(horse.Age)).OrderByDescending(x => x.HorseName).ToList();
+            var result = Find().Where(x => x.Age.Equals(age)).OrderByDescending(x => x.HorseName).ToList();
 
             return result;
         }
 
-        public List<Horse> FindHorseByWins(Horse horse)
+        public List<Horse> FindHorseByWins(int wins)
         {
-            var result = Find().Where(x => x.WinsCount.Equals(horse.WinsCount)).OrderBy(x => x.HorseName).ToList();
+            var result = Find().Where(x => x.WinsCount.Equals(wins)).OrderBy(x => x.HorseName).ToList();
 
             return result;
         }
 
-        public List<Horse> FindHorsesByLosses(Horse horse)
+        public List<Horse> FindHorsesByLosses(int losses)
         {
-            var result = Find().Where(x => x.LossesCount.Equals(horse.LossesCount)).OrderBy(x => x.HorseName).ToList();
+            var result = Find().Where(x => x.LossesCount.Equals(losses)).OrderBy(x => x.HorseName).ToList();
 
             return result;
         }
 
-        public List<Horse> FindHorseByName(Horse horse)
+        public List<Horse> FindHorseByName(string name)
         {
-            var result = Find().Where(x => x.HorseName.Equals(horse.HorseName)).ToList();
+            var result = Find().Where(x => x.HorseName.Equals(name)).ToList();
 
             return result;
         }
 
-        public List<Horse> FindHorsesByWeight(Horse horse)
+        public List<Horse> FindHorsesByWeight(float weight)
         {
-            var result = Find().Where(x => x.Weight.Equals(horse.Weight)).ToList();
+            var result = Find().Where(x => x.Weight.Equals(weight)).ToList();
 
             return result;
         }

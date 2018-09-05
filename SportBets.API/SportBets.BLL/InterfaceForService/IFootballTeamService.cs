@@ -7,9 +7,9 @@ namespace SportBets.BLL.InterfaceForService
     {
         FootballTeam CreateTeam(FootballTeam footballTeam);
         FootballTeam DeleteTeam(FootballTeam footballTeam);
-        List<FootballTeam> GetTeamsById(FootballTeam footballTeam);
-        List<FootballTeam> GetTeamsByName(FootballTeam footballTeam);
-        List<FootballTeam> GetTeamsByWins(FootballTeam footballTeam);
-        List<FootballTeam> GetTeamsByLosses(FootballTeam footballTeam);
+        List<FootballTeam> GetTeamsById(int id);
+        List<FootballTeam> GetTeamsByName(string name);
+        List<FootballTeam> GetTeamsByWins(int wins);
+        List<FootballTeam> GetTeamsByLosses(int losses);
     }
 }

@@ -38,17 +38,17 @@ namespace SportBets.BLL.Services
             _unitOfWork.Commit();
         }
 
-        public List<Bet> GetBetById(Bet bet)
+        public List<Bet> GetBetById(int id)
         {
-            var betById = _betFinder.FindBetsById(bet);
+            var betById = _betFinder.FindBetsById(id);
             _unitOfWork.Commit();
 
             return betById;
         }
 
-        public List<Bet> GetBetsByType(Bet bet)
+        public List<Bet> GetBetsByType(ItemType betType)
         {
-            var betsByType = _betFinder.FindBetsByType(bet.BetItemType);
+            var betsByType = _betFinder.FindBetsByType(betType);
             _unitOfWork.Commit();
 
             return betsByType;
@@ -62,9 +62,9 @@ namespace SportBets.BLL.Services
             return allBets;
         }
 
-        public List<Bet> GetBetsByDate(Bet bet)
+        public List<Bet> GetBetsByDate(DateTime date)
         {
-            var betsByDate = _betFinder.FindBetsByDate(bet.BetDate);
+            var betsByDate = _betFinder.FindBetsByDate(date);
             _unitOfWork.Commit();
 
             return betsByDate;

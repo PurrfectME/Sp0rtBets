@@ -64,13 +64,13 @@ namespace SportBets.BLL.Tests
             var service = new HorseService(unitOfWork.Object, finder.Object, horseCollection.Object);
 
             //act
-            finder.Setup(x => x.FindHorseById(horse))
+            finder.Setup(x => x.FindHorseById(horse.Id))
                 .Returns(new List<Horse>());
 
-            service.GetHorseById(horse);
+            service.GetHorseById(horse.Id);
 
             //assert
-            finder.Verify(x => x.FindHorseById(It.IsAny<Horse>()));
+            finder.Verify(x => x.FindHorseById(It.IsAny<int>()));
         }
 
         [Fact]
@@ -85,13 +85,13 @@ namespace SportBets.BLL.Tests
             var service = new HorseService(unitOfWork.Object, finder.Object, horseCollection.Object);
 
             //act
-            finder.Setup(x => x.FindHorseByName(horse))
+            finder.Setup(x => x.FindHorseByName(horse.HorseName))
                 .Returns(new List<Horse>());
 
-            service.GetHorsesByName(horse);
+            service.GetHorsesByName(horse.HorseName);
 
             //assert
-            finder.Verify(x => x.FindHorseByName(It.IsAny<Horse>()));
+            finder.Verify(x => x.FindHorseByName(It.IsAny<string>()));
         }
 
         [Fact]
@@ -106,13 +106,13 @@ namespace SportBets.BLL.Tests
             var service = new HorseService(unitOfWork.Object, finder.Object, horseCollection.Object);
 
             //act
-            finder.Setup(x => x.FindHorsesByWeight(horse))
+            finder.Setup(x => x.FindHorsesByWeight(horse.Weight))
                 .Returns(new List<Horse>());
 
-            service.GetHorsesByWeight(horse);
+            service.GetHorsesByWeight(horse.Weight);
 
             //assert
-            finder.Verify(x => x.FindHorsesByWeight(It.IsAny<Horse>()));
+            finder.Verify(x => x.FindHorsesByWeight(It.IsAny<float>()));
         }
 
         [Fact]
@@ -127,13 +127,13 @@ namespace SportBets.BLL.Tests
             var service = new HorseService(unitOfWork.Object, finder.Object, horseCollection.Object);
 
             //act
-            finder.Setup(x => x.FindHorseByWins(horse))
+            finder.Setup(x => x.FindHorseByWins(horse.WinsCount))
                 .Returns(new List<Horse>());
 
-            service.GetHorsesByWins(horse);
+            service.GetHorsesByWins(horse.WinsCount);
 
             //assert
-            finder.Verify(x => x.FindHorseByWins(It.IsAny<Horse>()));
+            finder.Verify(x => x.FindHorseByWins(It.IsAny<int>()));
         }
 
         [Fact]
@@ -148,36 +148,15 @@ namespace SportBets.BLL.Tests
             var service = new HorseService(unitOfWork.Object, finder.Object, horseCollection.Object);
 
             //act
-            finder.Setup(x => x.FindHorsesByLosses(horse))
+            finder.Setup(x => x.FindHorsesByLosses(horse.LossesCount))
                 .Returns(new List<Horse>());
 
-            service.GetHorsesByLosses(horse);
+            service.GetHorsesByLosses(horse.LossesCount);
 
             //assert
-            finder.Verify(x => x.FindHorsesByLosses(It.IsAny<Horse>()));
+            finder.Verify(x => x.FindHorsesByLosses(It.IsAny<int>()));
         }
-
-        [Fact]
-        public void GetHorsesById()
-        {
-            //initiallizng
-            var horse = new Horse();
-            var unitOfWork = new Mock<IUnitOfWork>();
-            var finder = new Mock<IHorseFinder>();
-            var horseCollection = new Mock<IRepository<Horse>>();
-
-            var service = new HorseService(unitOfWork.Object, finder.Object, horseCollection.Object);
-
-            //act
-            finder.Setup(x => x.FindHorseById(horse))
-                .Returns(new List<Horse>());
-
-            service.GetHorseById(horse);
-
-            //assert
-            finder.Verify(x => x.FindHorseById(It.IsAny<Horse>()));
-        }
-
+     
         [Fact]
         public void GetHorsesByAge()
         {
@@ -190,13 +169,13 @@ namespace SportBets.BLL.Tests
             var service = new HorseService(unitOfWork.Object, finder.Object, horseCollection.Object);
 
             //act
-            finder.Setup(x => x.FindHorsesByAge(horse))
+            finder.Setup(x => x.FindHorsesByAge(horse.Age))
                 .Returns(new List<Horse>());
 
-            service.GetHorsesByAge(horse);
+            service.GetHorsesByAge(horse.Age);
 
             //assert
-            finder.Verify(x => x.FindHorsesByAge(It.IsAny<Horse>()));
+            finder.Verify(x => x.FindHorsesByAge(It.IsAny<int>()));
         }
     }
 }

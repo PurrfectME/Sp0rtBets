@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SportBets.BLL.Entities;
 
@@ -8,8 +9,8 @@ namespace SportBets.BLL.InterfaceForService
     {
         User CreateUser(User user);
         User DeleteUser(User user);
-        List<User> GetUserById(User user);
-        List<User> GetUsersByRegDate(User user);
+        List<User> GetUserById(int id);
+        List<User> GetUsersByRegDate(DateTime date);
         List<User> GetAllUsers();
     }
 }

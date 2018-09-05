@@ -9,9 +9,9 @@ namespace SportBets.BLL.InterfaceForFinders
 {
     public interface IBasketballTeamFinder
     {
-        List<BasketballTeam> FindBasketballTeamById(BasketballTeam basketballTeam);
-        List<BasketballTeam> FindBasketballTeamsByTeamname(BasketballTeam basketballTeam);
-        List<BasketballTeam> FindBasketballTeamsByWins(BasketballTeam basketballTeam);
-        List<BasketballTeam> FindBasketballTeamsByLosses(BasketballTeam basketballTeam);
+        List<BasketballTeam> FindBasketballTeamById(int id);
+        List<BasketballTeam> FindBasketballTeamsByTeamname(string name);
+        List<BasketballTeam> FindBasketballTeamsByWins(int wins);
+        List<BasketballTeam> FindBasketballTeamsByLosses(int losses);
     }
 }

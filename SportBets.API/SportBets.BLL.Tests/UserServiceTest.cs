@@ -68,7 +68,7 @@ namespace SportBets.BLL.Tests
             finder.Setup(x => x.FindUserById(user.Id))
                 .Returns(new List<User>());
 
-            service.GetUserById(user);
+            service.GetUserById(user.Id);
 
             //assert
             finder.Verify(x => x.FindUserById(It.IsAny<int>()), Times.Once);
@@ -89,7 +89,7 @@ namespace SportBets.BLL.Tests
             finder.Setup(x => x.FindUsersByRegDate(user.RegistrationDate))
                 .Returns(new List<User>());
 
-            service.GetUsersByRegDate(user);
+            service.GetUsersByRegDate(user.RegistrationDate);
 
             //assert
             finder.Verify(x => x.FindUsersByRegDate(It.IsAny<DateTime>()));

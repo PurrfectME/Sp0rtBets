@@ -8,7 +8,7 @@ namespace SportBets.BLL.InterfaceForFinders
     {
         List<Bet> FindBetsByType(ItemType betType);
         List<Bet> FindBetsByDate(DateTime date);
-        List<Bet> FindBetsById(Bet bet);
+        List<Bet> FindBetsById(int id);
         List<Bet> FindAllBets();
     }
 }

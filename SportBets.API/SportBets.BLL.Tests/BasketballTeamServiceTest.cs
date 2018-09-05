@@ -60,12 +60,12 @@ namespace SportBets.BLL.Tests
 
             var basketballTeamService = new BasketballTeamService(unitOfWork.Object, teamFinder.Object, teamCollection.Object);
 
-            teamFinder.Setup(x => x.FindBasketballTeamById(team))
+            teamFinder.Setup(x => x.FindBasketballTeamById(team.Id))
                 .Returns(new List<BasketballTeam>());
 
-            basketballTeamService.GetTeamById(team);
+            basketballTeamService.GetTeamById(team.Id);
 
-            teamFinder.Verify(x => x.FindBasketballTeamById(It.IsAny<BasketballTeam>()));
+            teamFinder.Verify(x => x.FindBasketballTeamById(It.IsAny<int>()));
         }
 
         [Fact]
@@ -80,13 +80,13 @@ namespace SportBets.BLL.Tests
             var service = new BasketballTeamService(unitOfWork.Object, finder.Object, teamCollection.Object);
 
             //act
-            finder.Setup(x => x.FindBasketballTeamsByTeamname(team))
+            finder.Setup(x => x.FindBasketballTeamsByTeamname(team.TeamName))
                 .Returns(new List<BasketballTeam>());
 
-            service.GetTeambyName(team);
+            service.GetTeambyName(team.TeamName);
 
             //assert
-            finder.Verify(x => x.FindBasketballTeamsByTeamname(It.IsAny<BasketballTeam>()));
+            finder.Verify(x => x.FindBasketballTeamsByTeamname(It.IsAny<string>()));
         }
 
         [Fact]
@@ -101,13 +101,13 @@ namespace SportBets.BLL.Tests
             var service = new BasketballTeamService(unitOfWork.Object, finder.Object, teamCollection.Object);
 
             //act
-            finder.Setup(x => x.FindBasketballTeamsByWins(team))
+            finder.Setup(x => x.FindBasketballTeamsByWins(team.WinsCount))
                 .Returns(new List<BasketballTeam>());
 
-            service.GetTeamsByWins(team);
+            service.GetTeamsByWins(team.WinsCount);
 
             //assert
-            finder.Verify(x => x.FindBasketballTeamsByWins(It.IsAny<BasketballTeam>()));
+            finder.Verify(x => x.FindBasketballTeamsByWins(It.IsAny<int>()));
         }
 
         [Fact]
@@ -122,13 +122,13 @@ namespace SportBets.BLL.Tests
             var service = new BasketballTeamService(unitOfWork.Object, finder.Object, teamCollection.Object);
 
             //act
-            finder.Setup(x => x.FindBasketballTeamsByLosses(team))
+            finder.Setup(x => x.FindBasketballTeamsByLosses(team.LossesCount))
                 .Returns(new List<BasketballTeam>());
 
-            service.GetTeamsByLosses(team);
+            service.GetTeamsByLosses(team.LossesCount);
 
             //assert
-            finder.Verify(x => x.FindBasketballTeamsByLosses(It.IsAny<BasketballTeam>()));
+            finder.Verify(x => x.FindBasketballTeamsByLosses(It.IsAny<int>()));
         }
 
     }
