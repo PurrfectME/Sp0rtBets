@@ -9,7 +9,7 @@ namespace SportBets.DAL.Finder
 {
     public class UserFinder : BaseFinder<User> , IUserFinder
     {
-        public UserFinder(DbSet<User> entities) : base(entities)
+        public UserFinder(IDbSet<User> entities) : base(entities)
         {
         }
         

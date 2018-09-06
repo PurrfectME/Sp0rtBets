@@ -9,14 +9,20 @@ namespace SportBets.DAL.Tests
 {
    public class RepositoryTest
    {
+        private readonly Bet _bet = new Bet();
+
+
         [Fact]
         public void CreateEntity()
         {
+            
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             var setMock = context.MockedSet<Bet>();
-            var repository = new Repository<Bet>(context.Object.Bets);
-
+            var repository = new Repository<Bet>(setMock.Object);
+            setMock.Setup(x => x.Add(_bet))
+                .Returns(_bet);
+                
             //act
             repository.Create(new Bet());
 
@@ -29,14 +35,15 @@ namespace SportBets.DAL.Tests
         {
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
-            var setMock = context.MockedSet<Bet>();
-            var respository = new Repository<Bet>(context.Object.Bets);
-
+            var mockedSet = context.MockedSet<Bet>();
+            var repository = new Repository<Bet>(mockedSet.Object);
+            mockedSet.Setup(x => x.Remove(_bet));
+                
             //act
-            respository.Delete(new Bet());
+            repository.Delete(_bet);
 
             //assert
-            setMock.Verify(x => x.Remove(It.IsAny<Bet>()), Times.Once);
+            mockedSet.Verify(x => x.Remove(_bet), Times.Once);
 
         }
 
@@ -45,14 +52,15 @@ namespace SportBets.DAL.Tests
        {
            //initiallizing
            var context = DbContextMockFactory.Create<SportBetsContext>();
-           var setMock = context.MockedSet<Bet>();
+           context.MockedSet<Bet>();
            var repository = new Repository<Bet>(context.Object.Bets);
-
+               
+          
            //act
            repository.GetAll();
 
            //assert
-           setMock.Verify();
+          
        }
    }
 }

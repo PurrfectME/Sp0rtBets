@@ -34,8 +34,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_user);
-            var mockedSet = context.MockSetFor<User>(_list);
-            _userFinder = new UserFinder(mockedSet.Object.Users);
+            context.MockSetFor<User>(_list);
+            _userFinder = new UserFinder(context.Object.Users);
 
             //act
             var result = _userFinder.FindUserById(_user.Id);
@@ -50,8 +50,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_user);
-            var mockedSet = context.MockSetFor<User>(_list);
-            _userFinder = new UserFinder(mockedSet.Object.Users);
+            context.MockSetFor<User>(_list);
+            _userFinder = new UserFinder(context.Object.Users);
 
             //act
             var result = _userFinder.FindUsersByRegDate(_user.RegistrationDate);

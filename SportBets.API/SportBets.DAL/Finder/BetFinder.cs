@@ -36,7 +36,7 @@ namespace SportBets.DAL.Finder
 
         public List<Bet> FindAllBets()
         {
-            var allBets = Find().ToList();
+            var allBets = Find().Where(x => true).ToList();
 
             return allBets;
         }

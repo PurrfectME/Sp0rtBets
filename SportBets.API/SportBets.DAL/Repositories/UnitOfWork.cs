@@ -12,11 +12,6 @@ namespace SportBets.DAL.Repositories
         {
             this._context = context;
         }
-
-        public UnitOfWork()
-        {
-            _context = new SportBetsContext();
-        }
         
         public void Commit()
         {

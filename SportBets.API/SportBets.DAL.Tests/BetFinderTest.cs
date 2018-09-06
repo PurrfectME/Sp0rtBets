@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Moq;
 using Moq.EntityFramework;
 using SportBets.BLL.Entities;
+using SportBets.BLL.InterfaceForFinders;
+using SportBets.BLL.Interfaces;
 using SportBets.DAL.EntitiesContext;
 using SportBets.DAL.Finder;
 using Xunit;
@@ -21,7 +24,7 @@ namespace SportBets.DAL.Tests
             UserId = _user
         };
         private readonly List<Bet> _list = new List<Bet>();
-        private BetFinder _betFinder;
+        private IBetFinder _betFinder;
 
         [Fact]
         public void FindByType()
@@ -74,17 +77,18 @@ namespace SportBets.DAL.Tests
         [Fact]
         public void FindAllBets()
         {
+              
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_bet);
-            var mockedSet = context.MockSetFor<Bet>(_list);
-            _betFinder = new BetFinder(mockedSet.Object.Bets);
+            var set = context.MockSetFor<Bet>(_list);
+
+            _betFinder = new BetFinder(set.Object.Bets);
+                
+                  
 
             //act
-            var result = _betFinder.FindAllBets();
-
-            //assert
-            //Assert.Equal();
+            _betFinder.FindAllBets();
         }
     }
 }

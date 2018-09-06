@@ -8,7 +8,7 @@ namespace SportBets.DAL.Finder
 {
     public class HorseFinder : BaseFinder<Horse> , IHorseFinder
     {
-        public HorseFinder(DbSet<Horse> entities) : base(entities)
+        public HorseFinder(IDbSet<Horse> entities) : base(entities)
         {
         }
 

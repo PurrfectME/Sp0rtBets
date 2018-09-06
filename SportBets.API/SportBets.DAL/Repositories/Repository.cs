@@ -6,10 +6,10 @@ namespace SportBets.DAL.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class 
     {
-        private readonly DbSet<T> _entity;
+        private readonly IDbSet<T> _entity;
         //private bool _disposed;
 
-        public Repository(DbSet<T> entities)
+        public Repository(IDbSet<T> entities)
         {
             _entity = entities;
         }
@@ -26,7 +26,7 @@ namespace SportBets.DAL.Repositories
 
         public IQueryable<T> GetAll()
         {
-            return _entity;
+            return _entity.Where(x => true);
         }
 
     }

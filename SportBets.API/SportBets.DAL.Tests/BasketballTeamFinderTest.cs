@@ -20,8 +20,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_basketballTeam);
-            var mockedSet = context.MockSetFor<BasketballTeam>(_list);
-            _teamFinder = new BasketballTeamFinder(mockedSet.Object.BasketballTeams);
+            context.MockSetFor<BasketballTeam>(_list);
+            _teamFinder = new BasketballTeamFinder(context.Object.BasketballTeams);
 
             //act
             var result = _teamFinder.FindBasketballTeamById(_basketballTeam.Id);
@@ -36,8 +36,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_basketballTeam);
-            var mockedSet = context.MockSetFor<BasketballTeam>(_list);
-            _teamFinder = new BasketballTeamFinder(mockedSet.Object.BasketballTeams);
+            context.MockSetFor<BasketballTeam>(_list);
+            _teamFinder = new BasketballTeamFinder(context.Object.BasketballTeams);
 
             //act
             var result = _teamFinder.FindBasketballTeamsByTeamname(_basketballTeam.TeamName);
@@ -52,8 +52,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_basketballTeam);
-            var mockedSet = context.MockSetFor<BasketballTeam>(_list);
-            _teamFinder = new BasketballTeamFinder(mockedSet.Object.BasketballTeams);
+            context.MockSetFor<BasketballTeam>(_list);
+            _teamFinder = new BasketballTeamFinder(context.Object.BasketballTeams);
 
             //act
             var result = _teamFinder.FindBasketballTeamsByWins(_basketballTeam.WinsCount);
@@ -68,8 +68,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_basketballTeam);
-            var mockedSet = context.MockSetFor<BasketballTeam>(_list);
-            _teamFinder = new BasketballTeamFinder(mockedSet.Object.BasketballTeams);
+            context.MockSetFor<BasketballTeam>(_list);
+            _teamFinder = new BasketballTeamFinder(context.Object.BasketballTeams);
 
             //act
             var result = _teamFinder.FindBasketballTeamsByLosses(_basketballTeam.LossesCount);

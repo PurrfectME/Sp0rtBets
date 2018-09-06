@@ -29,8 +29,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_horse);
-            var mockedSet = context.MockSetFor<Horse>(_list);
-            _horseFinder = new HorseFinder(mockedSet.Object.Horses);
+            context.MockSetFor<Horse>(_list);
+            _horseFinder = new HorseFinder(context.Object.Horses);
             
             //act
             var result = _horseFinder.FindHorseById(_horse.Id);
@@ -45,8 +45,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_horse);
-            var mockedSet = context.MockSetFor<Horse>(_list);
-            _horseFinder = new HorseFinder(mockedSet.Object.Horses);
+            context.MockSetFor<Horse>(_list);
+            _horseFinder = new HorseFinder(context.Object.Horses);
 
             //act
             var result = _horseFinder.FindHorseByWins(_horse.WinsCount);
@@ -61,8 +61,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_horse);
-            var mockedSet = context.MockSetFor<Horse>(_list);
-            _horseFinder = new HorseFinder(mockedSet.Object.Horses);
+            context.MockSetFor<Horse>(_list);
+            _horseFinder = new HorseFinder(context.Object.Horses);
 
             //act
             var result = _horseFinder.FindHorsesByAge(_horse.Age);
@@ -77,8 +77,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_horse);
-            var mockedSet = context.MockSetFor<Horse>(_list);
-            _horseFinder = new HorseFinder(mockedSet.Object.Horses);
+            context.MockSetFor<Horse>(_list);
+            _horseFinder = new HorseFinder(context.Object.Horses);
 
             //act
             var result = _horseFinder.FindHorsesByLosses(_horse.LossesCount);
@@ -93,8 +93,8 @@ namespace SportBets.DAL.Tests
             //initiallizing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_horse);
-            var mockedSet = context.MockSetFor<Horse>(_list);
-            _horseFinder = new HorseFinder(mockedSet.Object.Horses);
+            context.MockSetFor<Horse>(_list);
+            _horseFinder = new HorseFinder(context.Object.Horses);
 
             //act
             var result = _horseFinder.FindHorseByName(_horse.HorseName);
@@ -109,8 +109,8 @@ namespace SportBets.DAL.Tests
             //initiallizzing
             var context = DbContextMockFactory.Create<SportBetsContext>();
             _list.Add(_horse);
-            var mockedSet = context.MockSetFor<Horse>(_list);
-            _horseFinder = new HorseFinder(mockedSet.Object.Horses);
+            context.MockSetFor<Horse>(_list);
+            _horseFinder = new HorseFinder(context.Object.Horses);
 
             //act
             var result = _horseFinder.FindHorsesByWeight(_horse.Weight);
