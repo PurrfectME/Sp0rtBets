@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Moq;
 using Moq.EntityFramework;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
-using SportBets.BLL.Interfaces;
 using SportBets.DAL.EntitiesContext;
 using SportBets.DAL.Finder;
 using Xunit;
@@ -21,7 +19,7 @@ namespace SportBets.DAL.Tests
             BetItemType = ItemType.Horse,
             Coefficient = 1.065,
             Id = 1,
-            UserId = _user
+            User = _user
         };
         private readonly List<Bet> _list = new List<Bet>();
         private IBetFinder _betFinder;

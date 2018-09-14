@@ -19,29 +19,18 @@ namespace SportBets.DAL.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Betcards",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        BetDate = c.DateTime(nullable: false),
-                        BetId_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Bets", t => t.BetId_Id)
-                .Index(t => t.BetId_Id);
-            
-            CreateTable(
                 "dbo.Bets",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         BetItemType = c.Int(nullable: false),
                         Coefficient = c.Double(nullable: false),
-                        UserId_Id = c.Int(),
+                        BetDate = c.DateTime(nullable: false),
+                        User_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.UserId_Id)
-                .Index(t => t.UserId_Id);
+                .ForeignKey("dbo.Users", t => t.User_Id)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.Users",
@@ -82,15 +71,12 @@ namespace SportBets.DAL.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Betcards", "BetId_Id", "dbo.Bets");
-            DropForeignKey("dbo.Bets", "UserId_Id", "dbo.Users");
-            DropIndex("dbo.Bets", new[] { "UserId_Id" });
-            DropIndex("dbo.Betcards", new[] { "BetId_Id" });
+            DropForeignKey("dbo.Bets", "User_Id", "dbo.Users");
+            DropIndex("dbo.Bets", new[] { "User_Id" });
             DropTable("dbo.Horses");
             DropTable("dbo.FootballTeams");
             DropTable("dbo.Users");
             DropTable("dbo.Bets");
-            DropTable("dbo.Betcards");
             DropTable("dbo.BasketballTeams");
         }
     }

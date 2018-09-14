@@ -41,32 +41,28 @@ namespace SportBets.BLL.Services
         public List<Bet> GetBetById(int id)
         {
             var betById = _betFinder.FindBetsById(id);
-            _unitOfWork.Commit();
-
+            
             return betById;
         }
 
         public List<Bet> GetBetsByType(ItemType betType)
         {
             var betsByType = _betFinder.FindBetsByType(betType);
-            _unitOfWork.Commit();
-
+            
             return betsByType;
         }
 
         public List<Bet> GetAllBets()
         {
             var allBets = _betFinder.FindAllBets();
-            _unitOfWork.Commit();
-
+            
             return allBets;
         }
 
         public List<Bet> GetBetsByDate(DateTime date)
         {
             var betsByDate = _betFinder.FindBetsByDate(date);
-            _unitOfWork.Commit();
-
+            
             return betsByDate;
         }
     }

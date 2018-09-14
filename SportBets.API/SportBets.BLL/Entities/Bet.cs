@@ -15,6 +15,6 @@ namespace SportBets.BLL.Entities
         public virtual ItemType BetItemType { get; set; }
         public virtual double Coefficient { get; set; }
         public virtual DateTime BetDate { get; set; }
-        public virtual User UserId { get; set; }
+        public virtual User User { get; set; }
     }
 }

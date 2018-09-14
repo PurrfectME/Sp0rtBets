@@ -13,7 +13,7 @@ namespace SportBets.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808230842173_Initial"; }
+            get { return "201809101221491_Initial"; }
         }
         
         string IMigrationMetadata.Source

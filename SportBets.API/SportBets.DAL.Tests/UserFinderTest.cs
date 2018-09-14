@@ -60,23 +60,21 @@ namespace SportBets.DAL.Tests
             Assert.Equal(_user.RegistrationDate, result.First().RegistrationDate);
         }
 
-        //[Fact]
-        //public void FindAllUsers()
-        //{
-        //    //initiallizing
-        //    var context = DbContextMockFactory.Create<SportBetsContext>();
-        //    _list.Add(_user);
-        //    var mockedSet = context.MockSetFor<User>(_list);
-        //    _userFinder = new UserFinder(mockedSet.Object.Users);
+        [Fact]
+        public void FindAllUsers()
+        { 
+            //arrange
+            var context = DbContextMockFactory.Create<SportBetsContext>();
+            _list.Add(_user);
+            var set = context.MockSetFor<User>(_list);
+            _userFinder = new UserFinder(set.Object.Users);
 
-        //    //act
-        //    var result = _userFinder.FindAllUsers();
+            //act
+            _userFinder.FindAllUsers();
 
-        //    //assert
-        //    //Assert.Equal();
+            //assert
 
-
-        //}
+        }
         
     }
 }

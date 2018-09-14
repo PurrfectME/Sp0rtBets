@@ -30,7 +30,7 @@ namespace SportBets.DAL.Finder
 
         public List<User> FindAllUsers()
         {
-            var allUsers = Find().ToList();
+            var allUsers = Find().Where(x => true).ToList();
 
             return allUsers;
         }

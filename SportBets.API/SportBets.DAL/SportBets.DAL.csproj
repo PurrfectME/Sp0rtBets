@@ -55,9 +55,9 @@
     <Compile Include="Finder\FootballTeamFinder.cs" />
     <Compile Include="Finder\HorseFinder.cs" />
     <Compile Include="Finder\UserFinder.cs" />
-    <Compile Include="Migrations\201808230842173_Initial.cs" />
-    <Compile Include="Migrations\201808230842173_Initial.Designer.cs">
-      <DependentUpon>201808230842173_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201809101221491_Initial.cs" />
+    <Compile Include="Migrations\201809101221491_Initial.Designer.cs">
+      <DependentUpon>201809101221491_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,15 +69,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808230842173_Initial.resx">
-      <DependentUpon>201808230842173_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SportBets.BLL\SportBets.BLL.csproj">
       <Project>{1ea61593-d2c9-40f2-9a98-d3d7eeb0b7d0}</Project>
       <Name>SportBets.BLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201809101221491_Initial.resx">
+      <DependentUpon>201809101221491_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
