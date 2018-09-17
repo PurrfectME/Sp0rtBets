@@ -25,6 +25,7 @@ namespace SportBets.BLL.Services
 
         public Bet CreateBet(Bet bet)
         {
+            bet.BetDate = DateTime.Now;
             var betToCreate = _betRepository.Create(bet);
             _unitOfWork.Commit();
 

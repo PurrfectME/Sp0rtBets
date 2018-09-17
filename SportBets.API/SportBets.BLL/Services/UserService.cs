@@ -23,6 +23,7 @@ namespace SportBets.BLL.Services
 
         public User CreateUser(User user)
         {
+            user.RegistrationDate = DateTime.Now;
             var userToCreate = _userRepository.Create(user);
             _unitOfWork.Commit();
 

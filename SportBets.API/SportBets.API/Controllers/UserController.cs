@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
+using EmitMapper;
+using EmitMapper.MappingConfiguration;
 using SportBets.API.Mapping;
 using SportBets.API.Models;
 using SportBets.BLL.Entities;
@@ -59,16 +61,14 @@ namespace SportBets.API.Controllers
             [HttpPost]
             public IHttpActionResult CreateUser(UserModel user)
             {
-                UserMapping.Map();
-
+                var mappedUser = UserMapping.Map(user);
+            
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
                 }
-
-                _userService.CreateUser(user);
                 
-                return Ok(user);
+                return Ok(_userService.CreateUser(mappedUser));
             }
 
             [HttpDelete]

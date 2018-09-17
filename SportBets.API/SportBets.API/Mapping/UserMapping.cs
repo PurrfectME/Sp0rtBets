@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using EmitMapper;
+﻿using EmitMapper;
 using EmitMapper.MappingConfiguration;
 using SportBets.API.Models;
 using SportBets.BLL.Entities;
@@ -11,24 +7,23 @@ namespace SportBets.API.Mapping
 {
     public class UserMapping
     {
-        public static void Map()
+        public static User Map(UserModel user)
         {
             var config = new DefaultMapConfig();
-            config.ConvertUsing((UserModel source) =>
+            var result = config.ConvertUsing((UserModel source) =>
                 new User
                 {
-                    Email = source.Email,
-                    Id = source.Id
+                    Email = source.Email
                 });
 
-            var user = ObjectMapperManager
+            var user1 = ObjectMapperManager
                 .DefaultInstance
-                .GetMapper<UserModel, User>(config)
-                .Map()
-                
-        }
+                .GetMapper<UserModel, User>(result)
+                .Map(new UserModel {
+                    Email = user.Email
+                });
 
-        
-        
+            return user1;
+        }
     }
 }

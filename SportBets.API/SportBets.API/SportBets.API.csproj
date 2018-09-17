@@ -137,10 +137,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BetController.cs" />
+    <Compile Include="Controllers\HorseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mapping\BasketballTeamMapping.cs" />
+    <Compile Include="Mapping\BetMapping.cs" />
+    <Compile Include="Mapping\FootballTeamMapping.cs" />
+    <Compile Include="Mapping\HorseMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
     <Compile Include="Models\BasketballTeamModel.cs" />
     <Compile Include="Models\BetModel.cs" />

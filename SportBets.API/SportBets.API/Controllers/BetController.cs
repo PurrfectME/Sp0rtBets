@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SportBets.API.Mapping;
+using SportBets.API.Models;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
 using SportBets.BLL.Interfaces;
@@ -24,16 +26,16 @@ namespace SportBets.API.Controllers
 
         
         [HttpPost]
-        public IHttpActionResult CreateBet([FromBody]Bet bet)
+        public IHttpActionResult CreateBet(BetModel bet)
         {
+            var mappedBet = BetMapping.Map(bet);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            _betService.CreateBet(bet);
-
-            return Ok(bet);
+            
+            return Ok(_betService.CreateBet(mappedBet));
         }
         
         [HttpDelete]
