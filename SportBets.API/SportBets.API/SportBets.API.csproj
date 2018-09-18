@@ -136,7 +136,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BasketballTeamController.cs" />
     <Compile Include="Controllers\BetController.cs" />
+    <Compile Include="Controllers\FootballTeamController.cs" />
     <Compile Include="Controllers\HorseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">

@@ -22,7 +22,7 @@ namespace SportBets.DAL.Finder
 
         public List<Bet> FindBetsByDate(DateTime date)
         {
-            var result = Find().Where(x => x.BetDate == date).OrderBy(x => x).ToList();
+            var result = Find().Where(x => x.BetDate == date).OrderBy(x => x.BetDate).ToList();
 
             return result;
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using EmitMapper;
+﻿using EmitMapper;
 using EmitMapper.MappingConfiguration;
 using SportBets.API.Models;
 using SportBets.BLL.Entities;
@@ -11,19 +7,23 @@ namespace SportBets.API.Mapping
 {
     public class BasketballTeamMapping
     {
-        public static BasketballTeam Map(BasketballTeamModel horse)
+        public static BasketballTeam Map(BasketballTeamModel team)
         {
             var config = new DefaultMapConfig();
             var result = config.ConvertUsing((BasketballTeamModel source) =>
                 new BasketballTeam() {
-                    Id = source.Id
+                    TeamName = source.TeamName,
+                    WinsCount = source.WinsCount,
+                    LossesCount = source.LossesCount
                 });
 
             var team1 = ObjectMapperManager
                 .DefaultInstance
                 .GetMapper<BasketballTeamModel, BasketballTeam>(result)
                 .Map(new BasketballTeamModel() {
-                    Id = horse.Id
+                    TeamName = team.TeamName,
+                    WinsCount = team.WinsCount,
+                    LossesCount = team.LossesCount
                 });
 
             return team1;

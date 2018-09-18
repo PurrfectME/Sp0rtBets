@@ -26,6 +26,7 @@ namespace SportBets.API.Controllers
 
         
         [HttpPost]
+        [Route("Bet/CreateBet/")]
         public IHttpActionResult CreateBet(BetModel bet)
         {
             var mappedBet = BetMapping.Map(bet);
@@ -39,6 +40,7 @@ namespace SportBets.API.Controllers
         }
         
         [HttpDelete]
+        [Route("Bet/DeleteBet/{id}")]
         public void DeleteBet(int id)
         {
             var betToDelete = _betService.GetBetById(id);
@@ -51,6 +53,7 @@ namespace SportBets.API.Controllers
         }
 
         [HttpGet]
+        [Route("Bet/ById/{id}")]
         public IHttpActionResult ById(int id)
         {
             var bet = _betService.GetBetById(id).FirstOrDefault();
@@ -63,6 +66,7 @@ namespace SportBets.API.Controllers
         }
 
         [HttpGet]
+        [Route("Bet/ByType/{type}")]
         public IHttpActionResult ByType(ItemType type)
         {
             var bet = _betService.GetBetsByType(type);
@@ -75,6 +79,7 @@ namespace SportBets.API.Controllers
         }
 
         [HttpGet]
+        [Route("Bet/AllBets/")]
         public IHttpActionResult AllBets()
         {
             var bets = _betService.GetAllBets();
@@ -87,6 +92,7 @@ namespace SportBets.API.Controllers
         }
 
         [HttpGet]
+        [Route("Bet/ByDate/{date}")]
         public IHttpActionResult ByDate(DateTime date)
         {
             var bets = _betService.GetBetsByDate(date);

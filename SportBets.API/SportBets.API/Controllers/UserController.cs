@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Results;
-using EmitMapper;
-using EmitMapper.MappingConfiguration;
 using SportBets.API.Mapping;
 using SportBets.API.Models;
 using SportBets.BLL.Entities;
@@ -21,67 +16,75 @@ namespace SportBets.API.Controllers
 {
     public class UserController : ApiController
     {
-            private static readonly SportBetsContext _context = new SportBetsContext();
-            private static readonly IUnitOfWork _unitOfWork = new UnitOfWork(_context);
-            private static readonly IUserFinder _userFinder = new UserFinder(_context.Users);
-            private static readonly IRepository<User> _repository = new Repository<User>(_context.Users);
-            private readonly UserService _userService = new UserService(_unitOfWork, _userFinder, _repository);
+        private static readonly SportBetsContext _context = new SportBetsContext();
+        private static readonly IUnitOfWork _unitOfWork = new UnitOfWork(_context);
+        private static readonly IUserFinder _userFinder = new UserFinder(_context.Users);
+        private static readonly IRepository<User> _repository = new Repository<User>(_context.Users);
+        private static readonly UserService _userService = new UserService(_unitOfWork, _userFinder, _repository);
 
-            [HttpGet]
-            public int Count() => _userService.GetAllUsers().Count;
 
-            [HttpGet]
-            public IHttpActionResult ById(int id)
+        [HttpPost]
+        [Route("User/CreateUser/")]
+        public IHttpActionResult CreateUser(UserModel user)
+        {
+            var mappedUser = UserMapping.Map(user);
+
+            if (!ModelState.IsValid)
             {
-                var user = _userService.GetUserById(id);
-                if (user == null)
-                {
-                    return NotFound();
-                }
-                
-                return Ok(user);
+                return BadRequest(ModelState);
             }
 
-            [HttpGet]
-            public IHttpActionResult AllUsers() => Ok(_userService.GetAllUsers());
+            return Ok(_userService.CreateUser(mappedUser));
+        }
 
-            //TODO: How to use this action correctly?
-            [HttpGet]
-            public IHttpActionResult ByReg(DateTime date)
-            {
-                var user = _userService.GetUsersByRegDate(date);
-                if (user == null)
-                {
-                    throw new HttpResponseException(HttpStatusCode.NotFound);
-                }
+        [HttpDelete]
+        [Route("User/DeleteUser/{id}")]
+        public void DeleteUser(int id)
+        {
+            var userToDelete = _userService.GetUserById(id).FirstOrDefault();
 
-                return Ok(user);
-            }
-            
-            [HttpPost]
-            public IHttpActionResult CreateUser(UserModel user)
+            if (userToDelete == null)
             {
-                var mappedUser = UserMapping.Map(user);
-            
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
-                
-                return Ok(_userService.CreateUser(mappedUser));
+                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            [HttpDelete]
-            public void DeleteUser(int id)
+            _userService.DeleteUser(userToDelete);
+        }
+        
+        [HttpGet]
+        [Route("User/Count/")]
+        public int Count() => _userService.GetAllUsers().Count;
+
+        [HttpGet]
+        [Route("User/ById/{id}")]
+        public IHttpActionResult ById(int id)
+        {
+            var user = _userService.GetUserById(id);
+            if (user == null)
             {
-                var userToDelete = _userService.GetUserById(id).FirstOrDefault();
-
-                if (userToDelete == null)
-                {
-                    throw new HttpResponseException(HttpStatusCode.NotFound);
-                }
-
-                _userService.DeleteUser(userToDelete);
+                return NotFound();
             }
+
+            return Ok(user);
+        }
+
+        [HttpGet]
+        [Route("User/AllUsers")]
+        public IHttpActionResult AllUsers() => Ok(_userService.GetAllUsers());
+
+        [HttpGet]
+        [Route("User/ByReg/{date}")]
+        public IHttpActionResult ByReg(DateTime date)
+        {
+            var user = _userService.GetUsersByRegDate(date);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        
     }
 }
