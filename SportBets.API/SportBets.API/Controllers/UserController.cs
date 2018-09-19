@@ -6,22 +6,32 @@ using SportBets.API.Mapping;
 using SportBets.API.Models;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
+using SportBets.BLL.InterfaceForService;
 using SportBets.BLL.Interfaces;
-using SportBets.BLL.Services;
 using SportBets.DAL.EntitiesContext;
-using SportBets.DAL.Finder;
-using SportBets.DAL.Repositories;
 
 namespace SportBets.API.Controllers
 {
     public class UserController : ApiController
     {
-        private static readonly SportBetsContext _context = new SportBetsContext();
-        private static readonly IUnitOfWork _unitOfWork = new UnitOfWork(_context);
-        private static readonly IUserFinder _userFinder = new UserFinder(_context.Users);
-        private static readonly IRepository<User> _repository = new Repository<User>(_context.Users);
-        private static readonly UserService _userService = new UserService(_unitOfWork, _userFinder, _repository);
+        private readonly SportBetsContext _context;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserFinder _userFinder;
+        private readonly IRepository<User> _repository;
+        private readonly IUserService _userService;
 
+        public UserController(SportBetsContext context,
+                              IUnitOfWork unitOfWork,
+                              IUserFinder userFinder,
+                              IRepository<User> repository,
+                              IUserService userService)
+        {
+            _context = context;
+            _unitOfWork = unitOfWork;
+            _userFinder = userFinder;
+            _repository = repository;
+            _userService = userService;
+        }
 
         [HttpPost]
         [Route("User/CreateUser/")]

@@ -26,12 +26,11 @@ namespace SportBets.BLL.Services
             return teamToCreate;
         }
 
-        public FootballTeam DeleteTeam(FootballTeam footballTeam)
+        public void DeleteTeam(FootballTeam footballTeam)
         {
-            var teamToDelete = _FTRepository.Delete(footballTeam);
+            _FTRepository.Delete(footballTeam);
             _unitOfWork.Commit();
 
-            return teamToDelete;
         }
 
         public List<FootballTeam> GetTeamsById(int id) =>

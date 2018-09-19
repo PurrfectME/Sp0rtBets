@@ -5,6 +5,7 @@ using SportBets.API.Mapping;
 using SportBets.API.Models;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
+using SportBets.BLL.InterfaceForService;
 using SportBets.BLL.Interfaces;
 using SportBets.BLL.Services;
 using SportBets.DAL.EntitiesContext;
@@ -15,15 +16,25 @@ namespace SportBets.API.Controllers
 {
     public class FootballTeamController : ApiController
     {
-        private static readonly SportBetsContext _context = new SportBetsContext();
-        private static readonly IUnitOfWork _unitOfWork = new UnitOfWork(_context);
-        private static readonly IFootballTeamFinder _finder = new FootballTeamFinder(_context.FootballTeams);
+        private readonly SportBetsContext _context;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IFootballTeamFinder _finder;
+        private readonly IRepository<FootballTeam> _repository;
+        private readonly IFootballTeamService _teamService;
 
-        private static readonly IRepository<FootballTeam> _repository =
-            new Repository<FootballTeam>(_context.FootballTeams);
 
-        private static readonly FootballTeamService _teamService =
-            new FootballTeamService(_unitOfWork, _finder, _repository);
+        public FootballTeamController(SportBetsContext context,
+                                      IUnitOfWork unitOfWork,
+                                      IFootballTeamFinder finder,
+                                      IRepository<FootballTeam> repository,
+                                      IFootballTeamService teamService)
+        {
+            _context = context;
+            _unitOfWork = unitOfWork;
+            _finder = finder;
+            _repository = repository;
+            _teamService = teamService;
+        }
 
 
         [HttpPost]

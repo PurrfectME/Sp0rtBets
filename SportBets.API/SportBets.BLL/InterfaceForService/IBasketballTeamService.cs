@@ -3,10 +3,10 @@ using SportBets.BLL.Entities;
 
 namespace SportBets.BLL.InterfaceForService
 {
-    interface IBasketballTeamService
+    public interface IBasketballTeamService
     {
         BasketballTeam CreateTeam(BasketballTeam basketballTeam);
-        BasketballTeam DeleteTeam(BasketballTeam basketballTeam);
+        void DeleteTeam(BasketballTeam basketballTeam);
         List<BasketballTeam> GetTeamById(int id);
         List<BasketballTeam> GetTeambyName(string name);
         List<BasketballTeam> GetTeamsByWins(int wins);

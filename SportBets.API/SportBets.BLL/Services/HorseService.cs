@@ -29,12 +29,10 @@ namespace SportBets.BLL.Services
             return horseToCreate;
         }
         
-        public Horse DeleteHorse(Horse horse)
+        public void DeleteHorse(Horse horse)
         {
-            var horseToDelete = _horseRepository.Delete(horse);
+            _horseRepository.Delete(horse);
             _unitOfWork.Commit();
-
-            return horseToDelete;
         }
         
         public List<Horse> GetHorseById(int id) => _horseFinder.FindHorseById(id);

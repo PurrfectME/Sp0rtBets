@@ -3,10 +3,10 @@ using SportBets.BLL.Entities;
 
 namespace SportBets.BLL.InterfaceForService
 {
-    interface IHorseService
+    public interface IHorseService
     {
         Horse CreateHorse(Horse horse);
-        Horse DeleteHorse(Horse horse);
+        void DeleteHorse(Horse horse);
         List<Horse> GetHorseById(int id);
         List<Horse> GetHorsesByAge(int age);
         List<Horse> GetHorsesByWeight(float weight);

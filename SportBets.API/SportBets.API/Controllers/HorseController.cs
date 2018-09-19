@@ -6,7 +6,7 @@ using SportBets.API.Models;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
 using SportBets.BLL.Interfaces;
-using SportBets.BLL.Services;
+using SportBets.BLL.InterfaceForService;
 using SportBets.DAL.EntitiesContext;
 using SportBets.DAL.Finder;
 using SportBets.DAL.Repositories;
@@ -15,12 +15,25 @@ namespace SportBets.API.Controllers
 {
     public class HorseController : ApiController
     {
-        private static readonly SportBetsContext _context = new SportBetsContext();
-        private static readonly IHorseFinder _horseFinder = new HorseFinder(_context.Horses);
-        private static readonly IUnitOfWork _unitOfWork = new UnitOfWork(_context);
-        private static readonly IRepository<Horse> _repository = new Repository<Horse>(_context.Horses);
-        private static readonly HorseService _horseService = new HorseService(_unitOfWork, _horseFinder, _repository);
-        
+        private readonly SportBetsContext _context;
+        private readonly IHorseFinder _horseFinder;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<Horse> _repository;
+        private readonly IHorseService _horseService;
+
+
+        public HorseController(SportBetsContext context,
+                               IHorseFinder horseFinder,
+                               IUnitOfWork unitOfWork,
+                               IRepository<Horse> repository,
+                               IHorseService horseService)
+        {
+            _context = context;
+            _horseFinder = horseFinder;
+            _unitOfWork = unitOfWork;
+            _repository = repository;
+            _horseService = horseService;
+        }
 
         [HttpPost]
         [Route("Horse/CreateHorse")]

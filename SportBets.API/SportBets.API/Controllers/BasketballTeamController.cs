@@ -1,29 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using SportBets.API.Mapping;
 using SportBets.API.Models;
 using SportBets.BLL.Entities;
 using SportBets.BLL.InterfaceForFinders;
+using SportBets.BLL.InterfaceForService;
 using SportBets.BLL.Interfaces;
-using SportBets.BLL.Services;
 using SportBets.DAL.EntitiesContext;
-using SportBets.DAL.Finder;
-using SportBets.DAL.Repositories;
 
 namespace SportBets.API.Controllers
 {
     public class BasketballTeamController : ApiController
     {
-        private static readonly SportBetsContext _context = new SportBetsContext();
-        private static readonly IUnitOfWork _unitOfWork = new UnitOfWork(_context);
-        private static readonly IBasketballTeamFinder _finder = new BasketballTeamFinder(_context.BasketballTeams);
-        private static readonly IRepository<BasketballTeam> _repository =
-            new Repository<BasketballTeam>(_context.BasketballTeams);
-        private static readonly BasketballTeamService _teamService = new BasketballTeamService(_unitOfWork, _finder, _repository);
+        private readonly SportBetsContext _context;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IBasketballTeamFinder _finder;
+        private readonly IRepository<BasketballTeam> _repository;
+        private readonly IBasketballTeamService _teamService;
+
+
+        public BasketballTeamController(SportBetsContext context, 
+                                        IUnitOfWork unitOfWork,
+                                        IBasketballTeamFinder finder,
+                                        IRepository<BasketballTeam> repository,
+                                        IBasketballTeamService teamService)
+        {
+            _context = context;
+            _unitOfWork = unitOfWork;
+            _finder = finder;
+            _repository = repository;
+            _teamService = teamService;
+        }
 
 
         [HttpPost]

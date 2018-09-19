@@ -31,12 +31,10 @@ namespace SportBets.BLL.Services
             return teamToCreate;
         }
 
-        public BasketballTeam DeleteTeam(BasketballTeam basketballTeam)
+        public void DeleteTeam(BasketballTeam basketballTeam)
         {
-            var teamToDelete = _BTRepository.Delete(basketballTeam);
+            _BTRepository.Delete(basketballTeam);
             _unitOfWork.Commit();
-
-            return teamToDelete;
         }
 
         public List<BasketballTeam> GetTeamById(int id) =>

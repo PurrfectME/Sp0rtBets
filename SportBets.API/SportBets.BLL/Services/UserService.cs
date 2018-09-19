@@ -30,12 +30,10 @@ namespace SportBets.BLL.Services
             return userToCreate;
         }
 
-        public User DeleteUser(User user)
+        public void DeleteUser(User user)
         {
-            var userToDelete = _userRepository.Delete(user);
+            _userRepository.Delete(user);
             _unitOfWork.Commit();
-
-            return userToDelete;
         }
 
         public List<User> GetUserById(int id) => _userFinder.FindUserById(id);
